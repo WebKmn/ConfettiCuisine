@@ -1,0 +1,16 @@
+<div class="form-data">
+    <form class="form-signin" action="/subscribers/create" method="POST">
+        <h2 class="form-signin-heading">Become a new Subscriber:</h2>
+        <br>
+        <label for="txtName">Name: </label>
+        <input class="form-control" type="text" name="name" id="txtName" placeholder="Name" autofocus>
+        <br>
+        <label for="txtEmail">Email: </label>
+        <input class="form-control" type="email" name="email" id="txtEmail" placeholder="Email" required>
+        <br>
+        <label for="txtZipCode">zipCode: </label>
+        <input class="form-control" type="text" name="zipCode" id="txtZipCode" pattern="\d*" placeholder="Zip Code" required>
+        <br>
+        <button class="btn btn-lg btn-block button" type="submit">Subscribe!</button>
+    </form>
+</div>

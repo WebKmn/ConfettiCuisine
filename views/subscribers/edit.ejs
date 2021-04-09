@@ -1,0 +1,16 @@
+<div class="form-data">
+    <form class="form-signin" action="<%= `/subscribers/${subscriber._id}/update?_method=PUT`%>" method="POST">
+        <h2 class="form-signin-heading">Edit Subscriber: </h2>
+        <br>
+        <label for="txtName">Name: </label>
+        <input class="form-control" type="text" name="name" id="txtName" value="<%= subscriber.name %>" autofocus required>
+        <br>
+        <label for="txtEmail">Email: </label>
+        <input class="form-control" type="email" name="email" id="txtEmail" value="<%= subscriber.email %>" required>
+        <br>
+        <label for="txtZipCode">zipCode: </label>
+        <input class="form-control" type="text" name="zipCode" id="txtZipCode"  value="<%= subscriber.zipCode %>"required>
+        <br>
+        <button class="btn btn-lg btn-block button" type="submit">Edit</button>
+    </form>
+</div>

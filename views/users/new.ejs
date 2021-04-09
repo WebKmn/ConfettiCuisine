@@ -1,0 +1,22 @@
+<div class="form-data">
+    <form class="form-signin" action="/users/create" method="POST">
+        <h2 class="form-signin-heading">Create a new User Account:</h2>
+        <br>
+        <label for="txtFirstName">First Name: </label>
+        <input class="form-control" type="text" name="first" id="txtFirstName" placeholder="First Name" autofocus required>
+        <br>
+        <label for="txtLastName">Last Name: </label>
+        <input class="form-control" type="text" name="last" id="txtLastName" placeholder="Last Name" required>
+        <br>
+        <label for="txtEmail">Email: </label>
+        <input class="form-control" type="email" name="email" id="txtEmail" placeholder="Email" required>
+        <br>
+        <label for="txtPassword">Password: </label>
+        <input class="form-control" type="password" name="password" id="txtPassword" placeholder="Password" required>
+        <br>
+        <label for="txtZipCode">zipCode: </label>
+        <input class="form-control" type="text" name="zipCode" id="txtZipCode" pattern="\d*" placeholder="Zip Code" required>
+        <br>
+        <button class="btn btn-lg button btn-block" type="submit">Sign Up!</button>
+    </form>
+</div>

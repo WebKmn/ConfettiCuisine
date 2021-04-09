@@ -1,0 +1,44 @@
+<h2 class="center">User Data for: <%= user.fullName %></h2>
+<table class="table">
+    <tbody>
+        <tr>
+            <td>Name: </td>
+            <td>
+                <%= user.fullName %>
+            </td>
+        </tr>
+        <tr>
+            <td>Email: </td>
+            <td>
+                <%= user.email %>
+            </td>
+        </tr>
+        <tr>
+            <td>zipCode: </td>
+            <td>
+                <%= user.zipCode %>
+            </td>
+        </tr>
+        <tr>
+            <td>Password: </td>
+            <td class="hidden-text">
+                <%= user.password %>
+            </td>
+        </tr>
+        <tr>
+            <td>Number of courses: </td>
+            <td><%= user.courses.length %></td>
+        </tr>
+        <% if (user.subscribedAccount) { %>
+            <tr>
+                <td>
+                    <a href="<%=`/subscribers/${user.subscribedAccount}` %>">
+                        subscribed account</a>
+                </td>
+            </tr>
+       <% } %>
+    </tbody>
+</table>
+<div>
+    <a class="button" href="/users">View all users</a>
+  </div>
