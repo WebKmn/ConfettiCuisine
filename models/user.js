@@ -1,40 +1,38 @@
 "use strict";
 
-const Subscriber = require("./subscriber");
+const Subscriber = require("./subscriber"),
+    passportLocalMongoose = require("passport-local-mongoose");
+
 const mongoose = require("mongoose"),
-{Schema} = require("mongoose"),
-userSchema = new Schema(
-    {
-        name: {
-            first: {
-                type: String,
+    {Schema} = mongoose,
+    userSchema = new Schema(
+        {
+            name: {
+                first: {
+                    type: String,
+                    required: true
+                },
+                last: {
+                    type: String,
+                    required: true
+                }
+            },
+            email: {
+                type: String, 
                 required: true
             },
-            last: {
-                type: String,
-                required: true
-            }
+            zipCode: {
+                type: Number,
+                min: [10000, "ZipCode too short"],
+                max: 99999
+            },
+            courses: [{type: mongoose.Schema.Types.ObjectId, ref: "Course"}],
+            subscribedAccount: {type: mongoose.Schema.Types.ObjectId, ref: "Subscriber"}
         },
-        email: {
-            type: String, 
-            required: true
-        },
-        zipCode: {
-            type: Number,
-            min: [10000, "ZipCode too short"],
-            max: 99999
-        },
-        password: {
-            type: String,
-            required: true
-        },
-        courses: [{type: mongoose.Schema.Types.ObjectId, ref: "Course"}],
-        subscribedAccount: {type: mongoose.Schema.Types.ObjectId, ref: "Subscriber"}
-    },
-    {
-        timestamps: true
-    }
-);
+        {
+            timestamps: true
+        }
+    );
 
 userSchema.virtual("fullName").get(function() {
     return `${this.name.first} ${this.name.last}`;
@@ -57,6 +55,10 @@ userSchema.pre("save", function(next) {
     } else {
         next();
     }
-})
+});
+
+userSchema.plugin(passportLocalMongoose, {
+    usernameField: "email"
+});
 
 module.exports = mongoose.model("User", userSchema);

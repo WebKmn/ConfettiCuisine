@@ -31,8 +31,41 @@
                 <span class="button">Users</span>
             </a>
         </div>
+
+        <div class="login-status">
+			<% if (loggedIn) { %>
+			<div class="bubble logged-in">
+				Logged in as <a href="<%=`/users/${currentUser._id}`%>">
+					<%= currentUser.fullName %></a>
+			</div>
+			<div class="bubble log-out">
+				<a href="/users/logout">Log out</a>
+			</div>
+			<%} else {%>
+			<div class="bubble log-in">
+				<a href="/users/login">Log In</a>
+			</div>
+			<% } %>
+		</div>
     </div>
-    <%- body %>
+
+    <div class="flashes">
+        <% if (flashMessages) { %>
+            <% if (flashMessages.success) { %>
+                <div class="flash success">
+                    <%= flashMessages.success %>
+                </div>
+           <% } else if (flashMessages.error) { %>
+                <div class="flash error" > 
+                    <%= flashMessages.error %>
+                </div>
+          <% } %>
+       <% } %>
+    </div>
+
+    <div class="container"> 
+        <%- body %>
+    </div>
 
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"
             integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
